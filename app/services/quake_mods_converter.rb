@@ -10,14 +10,12 @@ class QuakeModsConverter
   def perform
     File.open(@log, "r") do |file|
       file.each_line do |line|
-        file.each_line do |line|
-          splited = line.split
-          by = splited.index(BY)
-          killed = splited.index(KILLED)
-          if by.present? && killed.present?
-            mod = splited[by + 1]
-            @kills_by_means[mod] = (@kills_by_means[mod] || 0) + 1
-          end
+        splited = line.split
+        by = splited.index(BY)
+        killed = splited.index(KILLED)
+        if by.present? && killed.present?
+          mod = splited[by + 1]
+          @kills_by_means[mod] = (@kills_by_means[mod] || 0) + 1
         end
       end
     end
